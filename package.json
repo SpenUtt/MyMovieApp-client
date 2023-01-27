@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/SpenUtt/MyMovieApp-client/issues"
   },
-  "homepage": "https://github.com/SpenUtt/MyMovieApp-client#readme"
+  "homepage": "https://github.com/SpenUtt/MyMovieApp-client#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
