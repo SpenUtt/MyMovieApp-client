@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/SpenUtt/MyMovieApp-client#readme",
   "dependencies": {
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "prop-types": "^15.8.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
