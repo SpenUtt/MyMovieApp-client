@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -10,8 +9,8 @@ export const MainView = () => {
     useEffect(() => {
         fetch("https://api-mymovieapp.onrender.com/movies")
         .then((response) => response.json())
-        .then((data) => {
-            const moviesFromApi = data.map((movie) => {
+        .then((movies) => {
+            const moviesFromApi = movies.map((movie) => {
                 return {
                     key: movie._id, 
                     title: movie.Title, 

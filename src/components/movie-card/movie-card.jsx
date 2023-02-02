@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from "prop-types";
 var PropTypes = require('prop-types');
 
@@ -9,18 +8,18 @@ export const MovieCard = ({ movie, onMovieClick }) => {
                 onMovieClick(movie);
             }}
         >
-        {movie.title}
+        {movie.Title}
         </div>
     );
   };
 
   MovieCard.propTypes = {
     movie: PropTypes.shape({
-        image: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         genre: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
   };
