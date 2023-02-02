@@ -11,13 +11,15 @@ export const MainView = () => {
         fetch("https://api-mymovieapp.onrender.com/movies")
         .then((response) => response.json())
         .then((data) => {
-            const moviesFromApi = data.docs.map((doc) => {
+            const moviesFromApi = data.map((movie) => {
                 return {
-                    id: doc.key, 
-                    title: doc.title, 
-                    genre: doc.genre,
-                    details: doc.details,
-                    director: doc.director_name?.[0]
+                    key: movie._id, 
+                    title: movie.Title, 
+                    image: movie.ImagePath,
+                    description: movie.Description,
+                    director: movie.Director.Name, 
+                    genre: movie.Genre.Name,
+                    genre_description: movie.Genre.Description
                 };
             });
             setMovies(moviesFromApi);
