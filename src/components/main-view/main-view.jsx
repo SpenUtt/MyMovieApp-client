@@ -6,9 +6,16 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
-        fetch("https://api-mymovieapp.onrender.com/movies")
+        if (!token) {
+            return;
+        }
+
+        fetch("https://api-mymovieapp.onrender.com/movies", {
+            headers: { Authorization: `Bearer ${token}` }
+        })
         .then((response) => response.json())
         .then((movies) => {
             const moviesFromApi = movies.map((movie) => {
@@ -24,17 +31,35 @@ export const MainView = () => {
             });
             setMovies(moviesFromApi);
         });
-    }, []);
+    }, [token]);
     
     if (!user) {
-        return <LoginView />;
-        
+        return ( 
+            <LoginView
+                onLoggedIn={(user, token) => {
+                    setUser(user);
+                    setToken(token);
+                }}
+            />
+        );    
     };
 
     if (selectedMovie) {
         return (
-            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-        );
+            <>
+            <button
+                onClick={() => {
+                    setUser(null);
+                    setToken(null);
+                    localStorage.clear();
+                }}>
+                Logout
+            </button>
+            <MovieView 
+                movie={selectedMovie} 
+                onBackClick={() => setSelectedMovie(null)} 
+            />
+        </>);
     }
 
     if (movies.length === 0) {
