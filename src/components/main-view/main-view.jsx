@@ -9,19 +9,9 @@ export const MainView = () => {
     useEffect(() => {
         fetch("https://api-mymovieapp.onrender.com/movies")
         .then((response) => response.json())
-        .then((movies) => {
-            const moviesFromApi = movies.map((movie) => {
-                return {
-                    key: movie._id, 
-                    title: movie.Title, 
-                    image: movie.ImagePath,
-                    description: movie.Description,
-                    director: movie.Director.Name, 
-                    genre: movie.Genre.Name,
-                    genre_description: movie.Genre.Description
-                };
-            });
-            setMovies(moviesFromApi);
+        .then((movies) => { 
+            console.log("Movies", movies)
+            setMovies(movies);
         });
     }, []);
 
