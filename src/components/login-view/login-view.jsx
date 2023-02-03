@@ -15,9 +15,11 @@ export const LoginView = ( { onLoggedIn }) => {
             method: "POST",
             body: JSON.stringify(data)
         }).then((response) => {
-            onLoggedIn(username);
-        } else {
-            alert("Login failed");
+            if (response.ok) {
+                onLoggedIn(username);
+            } else {
+                alert("Login failed");
+            }
         });
     };
 
