@@ -27234,11 +27234,12 @@ const MainView = ()=>{
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                id: movie.id,
                 movie: movie,
                 onMovieClick: (newSelectedMovie)=>{
                     setSelectedMovie(newSelectedMovie);
                 }
-            }, movie.id, false, {
+            }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 68,
                 columnNumber: 17
@@ -27292,7 +27293,7 @@ MovieCard.propTypes = {
         ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Description: (0, _propTypesDefault.default).string.isRequired,
         Director: (0, _propTypesDefault.default).object.isRequired,
-        Genre: (0, _propTypesDefault.default).string.isRequired
+        Genre: (0, _propTypesDefault.default).object.isRequired
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
