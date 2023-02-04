@@ -18,7 +18,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         Title: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
-        Director: PropTypes.string.isRequired,
+        Director: PropTypes.object.isRequired,
         Genre: PropTypes.string.isRequired,
     }).isRequired,
     onMovieClick: PropTypes.func.isRequired
