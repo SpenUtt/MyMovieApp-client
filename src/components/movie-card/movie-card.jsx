@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import './movie-card.scss'; 
+
 var PropTypes = require('prop-types');
 
 export const MovieCard = ({ movie, onMovieClick }) => {
