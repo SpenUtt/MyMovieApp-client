@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { Row, Button, Col } from "react-bootstrap";
 import './main-view.scss';
 
 export const MainView = () => {
@@ -15,85 +16,61 @@ export const MainView = () => {
 
     useEffect(() => {
         if (!token) return;
-
+        
         fetch("https://api-mymovieapp.onrender.com/movies", {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((response) => response.json())
         .then((movies) => { 
-            console.log("Movies", movies)
             setMovies(movies);
         });
     }, [token]);
-    
-    if (!user) {
-        return (
-            <>
-                <LoginView
-                    onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                    }}
-                />
-                or 
-                <SignupView />
-            </> 
-        );    
-    };
-
-    if (selectedMovie) {
-        return (
-            <>
-            <button
-                onClick={() => {
-                    setUser(null);
-                    setToken(null);
-                    localStorage.clear();
-                }}>
-                Logout
-            </button>
-            <MovieView 
-                movie={selectedMovie} 
-                onBackClick={() => setSelectedMovie(null)} 
-            />
-        </>);
-    }
-
-    if (movies.length === 0) {
-        return (
-            <>
-            <button
-                onClick={() => {
-                    setUser(null);
-                    setToken(null);
-                    localStorage.clear();
-                }}>
-                Logout
-            </button>
-            <div>The list is empty!</div>;
-            </> 
-        );
-    }
 
     return (
-        <div>
-            <button
-                onClick={() => {
+        <Row className="justify-content-md-center"> 
+            {!user ? (
+                <>
+                    <Col md={5}>
+                        <LoginView onLoggedIn={(user, token) => {
+                            setUser(user);
+                            setToken(token)
+                        }}
+                        />
+                        or
+                        <SignupView />
+                    </Col>
+                </>
+            ) : selectedMovie ? (
+                <> 
+                    <Col md={8}>
+                        <MovieView 
+                            movie={selectedMovie} 
+                            onBackClick={() => setSelectedMovie(null)} 
+                        />
+                    </Col>
+                </>
+            ) : movies.length === 0 ? (
+                <div>The list is empty!</div>
+            ) : (
+                <>
+                    {movies.map((movies) => (
+                    <Col className="mb-5" key={movies._id} md={3}>    
+                        <MovieCard
+                            movie={movies}
+                            onMovieClick={(newSelectedMovie) => {
+                                setSelectedMovie(newSelectedMovie);
+                            }}
+                        />
+                    </Col>
+                    ))}
+                <Button onClick={() => { 
                     setUser(null);
                     setToken(null);
-                    localStorage.clear();
-                }}>
-                Logout
-            </button>
-            {movies.map((movie) => (
-                    <MovieCard
-                    id={movie.id}
-                    movie={movie}
-                    onMovieClick={(newSelectedMovie) => {
-                        setSelectedMovie(newSelectedMovie);
-                    }}
-                />
-                ))}
-        </div>
+                    localStorage.clear()
+                }}
+                >Logout</Button>
+                </>
+            )}
+        </Row>
     );
-}
+};

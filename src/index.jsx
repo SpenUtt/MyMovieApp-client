@@ -2,12 +2,16 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { MainView } from './components/main-view/main-view';
-import "bootstrap/dist/css/bootstrap.min.css"; // is this the correct bootstrap path??
-//if import doesn't work, try import Container from "react-bootstrap/Container"; 
+import Container from 'react-bootstrap/Container';
+
 import "./index.scss";
 
 const MyMovieApp = () => {
-  return <MainView />;
+  return ( 
+    <Container> 
+      <MainView />
+    </Container>
+  );
 };
 
 // Finds the root of your app
