@@ -2930,9 +2930,9 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _mainView = require("./components/main-view/main-view");
-// Import statement to indicate that you need to bundle `./index.scss`
+var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css"); // is this the correct bootstrap path??
+//if import doesn't work, try import Container from "react-bootstrap/Container"; 
 var _indexScss = require("./index.scss");
-// Main component (will eventually use all the others)
 const MyMovieApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
@@ -2958,7 +2958,7 @@ $RefreshReg$(_c, "MyMovieApp");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","bootstrap/dist/css/bootstrap.min.css":"i5LP7"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("4c6b70520c323e1e");
 
@@ -27237,14 +27237,14 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: "The list is empty!"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 74,
+                lineNumber: 73,
                 columnNumber: 13
             }, undefined),
             ";"
@@ -27261,24 +27261,23 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 81,
+                lineNumber: 80,
                 columnNumber: 13
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                    id: movie.id,
                     movie: movie,
                     onMovieClick: (newSelectedMovie)=>{
                         setSelectedMovie(newSelectedMovie);
                     }
-                }, void 0, false, {
+                }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 90,
+                    lineNumber: 89,
                     columnNumber: 21
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 80,
+        lineNumber: 79,
         columnNumber: 9
     }, undefined);
 };
@@ -28642,6 +28641,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./signup-view.scss":"6Z19M","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6Z19M":[function() {},{}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequire1c10")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./signup-view.scss":"6Z19M","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6Z19M":[function() {},{}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}]},["1xC6H","7a1Sg","d8Dch"], "d8Dch", "parcelRequire1c10")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
