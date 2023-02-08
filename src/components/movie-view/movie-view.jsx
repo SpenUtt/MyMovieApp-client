@@ -1,9 +1,9 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 import './movie-view.scss';
 
 export const MovieView = ({ movie, onBackClick }) => {
     return (
-        <Card bg="dark" text="white" style={{ width: "62rem" }}>
+        <Card className="justify-content-md-center" bg="dark" text="white" style={{ width: "62rem" }}>
             <Card.Header><h2>{movie.Title}</h2></Card.Header>
             <Card.Img src={movie.ImagePath} />
             <Card.Body>
@@ -15,7 +15,6 @@ export const MovieView = ({ movie, onBackClick }) => {
                 <Button variant="primary" onClick={onBackClick}>Back</Button>
             </Card.Footer>
         </Card>
-        
     );
 };
 
