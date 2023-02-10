@@ -1,5 +1,6 @@
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import './movie-view.scss';
+import { Navbar } from "../navbar/navbar";
 
 export const MovieView = ({ movie, onBackClick }) => {
     return (
