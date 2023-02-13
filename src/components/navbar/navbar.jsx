@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { Navbar, Nav } from 'react-bootstrap';
 
-function Navbar() {
+function Menubar() {
   return (
     <Container>
         <Navbar fixed="top" bg="dark" text="white" expand="lg">
@@ -10,8 +10,9 @@ function Navbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/logout">Logout</Nav.Link>
             </Nav>
         </Navbar.Collapse>
         </Navbar>
@@ -19,4 +20,4 @@ function Navbar() {
   );
 }
 
-//export default Navbar;
+export default Menubar;

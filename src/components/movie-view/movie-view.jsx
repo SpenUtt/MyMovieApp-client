@@ -1,10 +1,9 @@
 import { Button, Card } from "react-bootstrap";
 import './movie-view.scss';
-import { Navbar } from "../navbar/navbar";
 
 export const MovieView = ({ movie, onBackClick }) => {
     return (
-        <Card className="justify-content-md-center" bg="dark" text="white" style={{ width: "62rem" }}>
+        <Card className="justify-content-md-center" bg="dark" text="white" >
             <Card.Header><h2>{movie.Title}</h2></Card.Header>
             <Card.Img src={movie.ImagePath} />
             <Card.Body>

@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
-import { Navbar } from "../navbar/navbar";
 import './movie-card.scss'; 
 
 var PropTypes = require('prop-types');
