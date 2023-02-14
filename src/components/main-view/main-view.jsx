@@ -3,7 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import Menubar from "../navbar/navbar"; //why does this line not need {}? is it only needed for multiple components? 
+import { Menubar } from "../navbar/navbar";  
 import { Row, Button, Col } from "react-bootstrap"; //remove button?
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -69,7 +69,7 @@ export const MainView = () => {
                         }
                     />
                     <Route
-                        path="/movies/movieId"
+                        path="/movies/:movie_Id"
                         element={
                             <>
                                 {!user ? (
@@ -78,7 +78,7 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movie={movies} />
+                                        <MovieView movies={movies} />
                                     </Col>
                                 )}
                             </>
@@ -94,10 +94,10 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <>
-                                        {movies.map((movies) => (
-                                            <Col className="mb-4" key={movies._id} xl={3} lg={4} md={6}>
+                                        {movies.map((movie) => (
+                                            <Col className="mb-4" key={movie._id} xl={3} lg={4} md={6}>
                                                 <MovieCard 
-                                                    movie={movies}
+                                                    movie={movie}
                                                 />
                                             </Col>
                                         ))}

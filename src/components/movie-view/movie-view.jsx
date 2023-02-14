@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 //import { Button, Card } from "react-bootstrap"; I suppose this can be deleted? 
 import './movie-view.scss';
 
-export const MovieView = ({ movie }) => {
+export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
-    const movie = movie.find((m) => m.id === movieId);
+    const movie = movies.find((m) => m.id === movieId);
 
     return (
         <div>
