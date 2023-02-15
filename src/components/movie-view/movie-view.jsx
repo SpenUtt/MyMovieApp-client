@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import './movie-view.scss';
 import { useState } from "react";
 import { useEffect } from "react";
+import { Row, Col, Button } from "react";
 
 export const MovieView = ({ movies, username, favoriteMovies }) => {
     const { movieId } = useParams();
@@ -81,7 +82,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
     },[])
 
     return (
-        <Row className="movie-view">
+        <Row>
             <Col md={6} className="movie-poster">
                 <img className="w-100" src={movie.ImagePath} />
             </Col>
@@ -107,7 +108,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
                 <br />
                 <br /> 
                 <Button 
-                    className="button-add-favorite"
+                    //className="button-add-favorite"
                     onClick={addFavoriteMovie}
                     disabled={movieExists}
                 >+ Add to Favorites
