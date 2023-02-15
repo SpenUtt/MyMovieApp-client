@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Col, Card, Link } from "react-bootstrap";
-import { ProfileView } from "../profile-view/profile-view";
+import { ProfileView } from "./profile-view";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const FavMovies = ({user, movies}) => {
@@ -10,9 +10,9 @@ export const FavMovies = ({user, movies}) => {
 
     const [token] = useState(storedToken ? storedToken : null);
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
     const [favoriteMovies, setFavoriteMovies] = useState([]);
 

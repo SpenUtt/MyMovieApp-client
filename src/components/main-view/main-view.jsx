@@ -8,7 +8,7 @@ import { Row, Button, Col } from "react-bootstrap"; //remove button?
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import './main-view.scss';
-import { ProfileView } from "../profile.view/profile-view";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user")); 

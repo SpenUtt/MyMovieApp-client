@@ -115,9 +115,9 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
                 <br/>
                 <br/>
                 <Button 
-                variant="danger"
-                onClick={removeFavoriteMovie}
-                disabled={disableRemove}
+                    variant="danger"
+                    onClick={removeFavoriteMovie}
+                    disabled={disableRemove}
                 >Remove from Favorites
                 </Button> 
             </Col>
