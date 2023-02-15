@@ -8,9 +8,10 @@ import { Row, Button, Col } from "react-bootstrap"; //remove button?
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import './main-view.scss';
+import { ProfileView } from "../profile.view/profile-view";
 
 export const MainView = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user")); //why are storedUser and Token not needed?
+    const storedUser = JSON.parse(localStorage.getItem("user")); 
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
@@ -78,7 +79,21 @@ export const MainView = () => {
                                     <Col>The list is empty!</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movies={movies} />
+                                        <MovieView movies={movies} username={user.Username} favoriteMovies={user.FavoriteMovies}/>
+                                    </Col>
+                                )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/profile"
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to="/login" replace /> 
+                                ) : ( 
+                                    <Col>
+                                        <ProfileView user={user} movies={movies}/>
                                     </Col>
                                 )}
                             </>

@@ -27173,7 +27173,7 @@ var _mainViewScss = require("./main-view.scss");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const storedUser = JSON.parse(localStorage.getItem("user")); //why are storedUser and Token not needed?
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
@@ -27251,7 +27251,9 @@ const MainView = ()=>{
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     md: 8,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-                                        movies: movies
+                                        movies: movies,
+                                        username: user.Username,
+                                        favoriteMovies: user.FavoriteMovies
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false)
@@ -27282,7 +27284,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 87,
+                            lineNumber: 89,
                             columnNumber: 21
                         }, undefined)
                     ]
@@ -46645,11 +46647,20 @@ const Menubar = ({ user , onLoggedOut  })=>{
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                        as: (0, _reactRouterDom.Link),
+                                        to: "/profile",
+                                        children: "Profile"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navbar/navbar.jsx",
+                                        lineNumber: 31,
+                                        columnNumber: 17
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                         onClick: onLoggedOut,
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/components/navbar/navbar.jsx",
-                                        lineNumber: 31,
+                                        lineNumber: 34,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -46676,26 +46687,7 @@ const Menubar = ({ user , onLoggedOut  })=>{
         lineNumber: 8,
         columnNumber: 5
     }, undefined);
-}; /*
-function Menubar() {
-  return (
-    <Container>
-        <Navbar fixed="top" bg="dark" text="white" expand="lg">
-        <Navbar.Brand href="#home">MyMovieApp</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link href="/logout">Logout</Nav.Link>
-            </Nav>
-        </Navbar.Collapse>
-        </Navbar>
-    </Container>
-  );
-}
-
-export default Menubar;*/ 
+};
 _c = Menubar;
 var _c;
 $RefreshReg$(_c, "Menubar");
