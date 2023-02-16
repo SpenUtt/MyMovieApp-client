@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import './movie-view.scss';
 import { useState } from "react";
 import { useEffect } from "react";
-import { Row, Col, Button } from "react";
+import { Row, Col, Button } from "react-bootstrap";
 
 export const MovieView = ({ movies, username, favoriteMovies }) => {
     const { movieId } = useParams();
