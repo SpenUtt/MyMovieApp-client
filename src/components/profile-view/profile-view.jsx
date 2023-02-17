@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card";
 import { UpdateForm } from "./update-form";
 import { FavMovies } from "./fav-movies"; 
-import { Button, Container, Form, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 export const ProfileView = ({ user, movies }) => {
     const storedToken = localStorage.getItem("token");
@@ -21,7 +20,7 @@ export const ProfileView = ({ user, movies }) => {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     const getUser = (token) => {
-        fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}`,{
+        fetch(`https://api-mymovieapp.onrender.com/users/${user.Username}`,{
             method: "GET",
             headers: { Authorization: `Bearer ${token}`},
         }).then(response => response.json())

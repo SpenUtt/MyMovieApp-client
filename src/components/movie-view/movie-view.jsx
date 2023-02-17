@@ -19,7 +19,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
     //add FavMovie
     
     const addFavoriteMovie = async() => {
-        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}/movies/${movieId}`, {
+        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/users/${user.Username}/movies/${movieId}`, {
             method: "POST", 
             headers: {
                 Authorization: `Bearer ${storedToken}`,
@@ -40,7 +40,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
     };
 
     const removeFavoriteMovie = async() => {
-        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}/movies/${movieId}`, {
+        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/users/${user.Username}/movies/${movieId}`, {
             method: "DELETE", 
             headers: {
                 Authorization: `Bearer ${storedToken}`,
@@ -93,14 +93,17 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
                 <div className="movie-director">
                     <span className="label"><h5>Director: </h5></span>
                     <span className="value">{movie.Director.Name}<br></br></span>
+                    <br></br>
                 </div>
                 <div className="movie-genre">
                     <span className="label"><h5>Genre: </h5></span>
                     <span className="value">{movie.Genre.Name}<br></br></span>
+                    <br></br>
                 </div>
                 <div className="movie-description">
                     <span className="label"><h5>Description: </h5></span>
                     <span className="value">{movie.Description}<br></br><br></br></span>
+                    <br></br>
                 </div>
                 <Link to={`/`}>
                     <button className="back-button">Back</button>
