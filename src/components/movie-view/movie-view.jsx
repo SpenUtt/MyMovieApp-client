@@ -7,7 +7,9 @@ import { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 
 export const MovieView = ({ movies, username, favoriteMovies }) => {
+    console.log("username", username);
     const { movieId } = useParams();
+    console.log("movieId", movieId);
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user")); 
     const movie = movies.find((m) => m.id === movieId);
@@ -19,7 +21,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
     //add FavMovie
     
     const addFavoriteMovie = async() => {
-        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/users/${user.Username}/movies/${movieId}`, {
+        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/users/${username}/movies/${movieId}`, {
             method: "POST", 
             headers: {
                 Authorization: `Bearer ${storedToken}`,
