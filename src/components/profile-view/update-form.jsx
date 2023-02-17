@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Container, Form, Row, Col, Card } from "react-bootstrap";
+import { Button, Form, } from "react-bootstrap";
 
 export const UpdateForm = ({ user }) => {
     const storedToken = localStorage.getItem("token");
@@ -23,7 +23,7 @@ export const UpdateForm = ({ user }) => {
         };
         console.log(data)
 
-        const updateUser = await fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}`, {
+        const updateUser = await fetch(`https://api-mymovieapp.onrender.com/users/${username}`, {
             method: "PUT",
             body: JSON.stringify(data), 
             headers: {
@@ -44,7 +44,7 @@ export const UpdateForm = ({ user }) => {
     };
 
     const handleDeregister = () => {
-        fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}`, {
+        fetch(`https://api-mymovieapp.onrender.com/users/${username}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`, 

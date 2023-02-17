@@ -47108,7 +47108,7 @@ const UpdateForm = ({ user  })=>{
             Birthday: birthday
         };
         console.log(data);
-        const updateUser = await fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}`, {
+        const updateUser = await fetch(`https://api-mymovieapp.onrender.com/users/${username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -47125,7 +47125,7 @@ const UpdateForm = ({ user  })=>{
         } else alert("Something went wrong");
     };
     const handleDeregister = ()=>{
-        fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}`, {
+        fetch(`https://api-mymovieapp.onrender.com/users/${username}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
