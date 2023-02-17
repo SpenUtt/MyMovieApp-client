@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, Form, } from "react-bootstrap";
 
 export const UpdateForm = ({ user }) => {

@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 import './movie-card.scss'; 
 
-//var PropTypes = require('prop-types'); to be deleted? 
-
 export const MovieCard = ({ movie }) => {
     return (
         <Card bg="dark" text="white" className="h-100">

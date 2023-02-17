@@ -4,7 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { Menubar } from "../navbar/navbar";  
-import { Row, Button, Col } from "react-bootstrap"; //remove button?
+import { Row, Col } from "react-bootstrap"; 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import './main-view.scss';
@@ -16,7 +16,7 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
-    //const [selectedMovie, setSelectedMovie] = useState(null);
+    
 
     useEffect(() => {
         console.log(storedToken, token)
@@ -76,7 +76,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : movies.length === 0 ? (
-                                    <Col>The list is empty!</Col>
+                                    <Col>Loading list....</Col>
                                 ) : (
                                     <Col md={8}>
                                         <MovieView movies={movies} username={user.Username} favoriteMovies={user.FavoriteMovies}/>
@@ -106,7 +106,7 @@ export const MainView = () => {
                                 {!user ? (
                                     <Navigate to="/login" replace />
                                 ) : movies.length === 0 ? (
-                                    <Col>The list is empty!</Col>
+                                    <Col>Loading list....</Col>
                                 ) : (
                                     <>
                                         {movies.map((movie) => (

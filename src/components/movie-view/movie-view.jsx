@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-//import { Button, Card } from "react-bootstrap"; I suppose this can be deleted? 
 import './movie-view.scss';
 import { useState } from "react";
 import { useEffect } from "react";

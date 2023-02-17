@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Col, Card, Link } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { ProfileView } from "./profile-view";
 import { MovieCard } from "../movie-card/movie-card";
 
