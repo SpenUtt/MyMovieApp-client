@@ -20,7 +20,7 @@ export const FavMovies = ({user, movies}) => {
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     const getUser = (token) => {
-        fetch(`https://api-mymovieapp.onrender.com/profiles/${user.Username}`,{
+        fetch(`https://api-mymovieapp.onrender.com/users/${user.Username}`,{
             method: "GET",
             headers: { Authorization: `Bearer ${token}`},
         }).then(response => response.json())

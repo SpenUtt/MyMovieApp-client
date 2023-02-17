@@ -9,10 +9,11 @@ import { Row, Col, Button } from "react-bootstrap";
 export const MovieView = ({ movies, username, favoriteMovies }) => {
     console.log("username", username);
     const { movieId } = useParams();
-    console.log("movieId", movieId);
+    console.log("useParams", useParams());
+    console.log("movies", movies);
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user")); 
-    const movie = movies.find((m) => m.id === movieId);
+    const movie = movies.find((m) => m._id === movieId);
 
     const [movieExists, setMovieExists] = useState(false);
     const [disableRemove, setDisableRemove] = useState(true)
@@ -42,7 +43,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
     };
 
     const removeFavoriteMovie = async() => {
-        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/users/${user.Username}/movies/${movieId}`, {
+        const favoriteMovie = await fetch(`https://api-mymovieapp.onrender.com/users/${username}/movies/${movieId}`, {
             method: "DELETE", 
             headers: {
                 Authorization: `Bearer ${storedToken}`,
