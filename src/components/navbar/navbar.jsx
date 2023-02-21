@@ -1,9 +1,13 @@
 import Container from 'react-bootstrap/Container';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 
-export const Menubar = ({ user, onLoggedOut }) => {
+export const Menubar = ({ user, onLoggedOut, onSearch }) => {
+  const handleSearch = (searchString) => {
+    onSearch(searchString);
+  };
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
@@ -34,6 +38,16 @@ export const Menubar = ({ user, onLoggedOut }) => {
                 <Nav.Link onClick={onLoggedOut}>
                   Logout
                 </Nav.Link>
+                <Form className="d-flex">
+                  <Form.Control
+                    id="searchbar"
+                    type="search"
+                    placeholder="Search"
+                    className=""
+                    aria-label="Search"
+                    onChange={(event) => handleSearch(event.target.value)}
+                  />
+                </Form>
               </>
             )}
           </Nav>

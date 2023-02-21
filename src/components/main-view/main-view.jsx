@@ -16,8 +16,20 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
+    const [filteredMovieList, setFilteredMovieList] = useState([]);
     
+    const findSimilarMovies = (movie) => 
+        movies.filter((m) => m.Genre.Name === movie.Genre.Name && m._id !== movie._id);
 
+    function movieSearch(searchString) {
+        console.log("search string", searchString)
+        setFilteredMovieList(
+            movies.filter((movie) => {
+                return movie.Title.toLowerCase().includes(searchString.toLowerCase())
+            })
+        );
+    }
+    
     useEffect(() => {
         console.log(storedToken, token)
         if (!token) return;
@@ -27,7 +39,8 @@ export const MainView = () => {
         })
         .then((response) => response.json())
         .then((movies) => { 
-            setMovies(movies);
+            setMovies(movies); //remove this line? 
+            setFilteredMovieList(movies);
         });
     }, [token]);
 
@@ -38,6 +51,7 @@ export const MainView = () => {
                 onLoggedOut={() => {
                     setUser(null);
                 }}
+                onSearch={movieSearch}
             />
             <Row className="justify-content-md-center" style={{ paddingTop: 100}}> 
                 <Routes>
@@ -79,7 +93,12 @@ export const MainView = () => {
                                     <Col>Loading list....</Col>
                                 ) : (
                                     <Col md={8}>
-                                        <MovieView movies={movies} username={user.Username} favoriteMovies={user.FavoriteMovies}/>
+                                        <MovieView 
+                                            movies={movies} 
+                                            username={user.Username} 
+                                            findSimilarMovies={findSimilarMovies}
+                                            favoriteMovies={user.FavoriteMovies}
+                                        />
                                     </Col>
                                 )}
                             </>
@@ -109,7 +128,7 @@ export const MainView = () => {
                                     <Col>Loading list....</Col>
                                 ) : (
                                     <>
-                                        {movies.map((movie) => (
+                                        {filteredMovieList.map((movie) => (
                                             <Col className="mb-4" key={movie._id} xl={3} lg={4} md={6}>
                                                 <MovieCard 
                                                     movie={movie}

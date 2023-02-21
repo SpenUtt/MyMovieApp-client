@@ -4,15 +4,16 @@ import './movie-view.scss';
 import { useState } from "react";
 import { useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const MovieView = ({ movies, username, favoriteMovies }) => {
+export const MovieView = ({ movies, username, findSimilarMovies, favoriteMovies }) => {
     console.log("username", username);
     const { movieId } = useParams();
-    console.log("useParams", useParams());
     console.log("movies", movies);
     const storedToken = localStorage.getItem("token");
     const storedUser = JSON.parse(localStorage.getItem("user")); 
     const movie = movies.find((m) => m._id === movieId);
+    const similarMovies = findSimilarMovies(movie);
 
     const [movieExists, setMovieExists] = useState(false);
     const [disableRemove, setDisableRemove] = useState(true)
@@ -84,6 +85,7 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
     },[])
 
     return (
+        <>
         <Row>
             <Col md={6} className="movie-poster">
                 <img className="w-100" src={movie.ImagePath} />
@@ -128,6 +130,19 @@ export const MovieView = ({ movies, username, favoriteMovies }) => {
                 </Button> 
             </Col>
         </Row>
+        <h4>You might like these: </h4>
+        <Row>
+            {/*display similar movies*/}
+                {similarMovies.length === 0 ? 
+                    <span> No movies selected</span>
+                    : similarMovies.map ((movie) => (
+                        <Col className="mb-4" key={movie._id} xl={3} lg={4} md={6}>
+                            <MovieCard movie={movie} />
+                        </Col>
+                ))
+            }
+        </Row>
+        </>
     );
 };
 
