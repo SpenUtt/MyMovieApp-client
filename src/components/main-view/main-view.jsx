@@ -39,7 +39,6 @@ export const MainView = () => {
         })
         .then((response) => response.json())
         .then((movies) => { 
-            setMovies(movies); //remove this line? 
             setFilteredMovieList(movies);
         });
     }, [token]);
@@ -77,7 +76,10 @@ export const MainView = () => {
                                     <Navigate to="/" />
                                 ) : (
                                     <Col md={5}>
-                                        <LoginView onLoggedIn={(user) => setUser(user)} />
+                                        <LoginView onLoggedIn={(user, token) => {
+                                            setUser(user)
+                                            setToken(token)
+                                        }} />
                                     </Col>
                                 )}
                             </>
